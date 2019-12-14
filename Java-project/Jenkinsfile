@@ -1,0 +1,29 @@
+node(''){
+stage('Initilize'){
+ def mavenhome = tool 'maven'
+ env.PATH = "${mavenhome}/bin:${env.PATH}"
+}
+stage('clone'){
+git branch: 'master',
+credentialsId: 'edb1f7cf-30e1-40cb-8591-5044e6b23e28',
+url: 'https://github.com/babu479/Sunday.git'
+}
+stage('Build'){
+sh '''
+cd Java-project
+mvn clean install'''
+}
+ stage('Docker-Image'){
+  sh '''
+  pwd
+  cd Java-project
+  pwd
+  sudo docker build -t first-image .
+  '''
+ }
+ stage('docker-run'){
+  sh '''
+  sudo docker run -d -p 8081:8080 first-image
+  '''
+ }
+}
