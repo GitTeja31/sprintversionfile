@@ -4,7 +4,7 @@
   <groupId>com.mkyong.web</groupId>
   <artifactId>java-web-project</artifactId>
   <packaging>war</packaging>
-  <version>sample_project-12.1.12</version>
+  <version>sample_project-12.1.13</version>
   <name>java-web-project Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
